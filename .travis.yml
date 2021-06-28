@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+
+before_install:
+  - docker build -t induk/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true induk/docker-react npm run test -- --coverage
